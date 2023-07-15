@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  refinery:
+    image: refinery
+    ports:
+      - 8080:8080
+      - 8081:8081
+    command: refinery -c /etc/refinery/config.yaml -r /etc/refinery/rules.yaml
+    environment:
+      - REFINERY_QUERY_AUTH_TOKEN=my_token
+    volumes:
+      - ./config.yaml:/etc/refinery/config.yaml
+      - ./rules.yaml:/etc/refinery/rules.yaml
